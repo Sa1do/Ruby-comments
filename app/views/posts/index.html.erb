@@ -1,0 +1,9 @@
+<br>
+<br>
+<br>
+<br>
+
+<% @posts.each  do |post| %>
+	<h1><%= link_to post.title, post_views_path(post) %></h1>
+	<p><%= post.content %></p>
+<% end %>	

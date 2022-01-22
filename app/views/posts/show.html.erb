@@ -1,0 +1,27 @@
+<br>
+<br>
+<br>
+<br>
+
+<%= link_to 'New', new_post_path %>
+<%= link_to 'Posts', posts_path %>
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
+<%= link_to 'Edit', edit_post_path %>
+<%= button_to 'Delete', @post, method: :delete %>
+<br>
+
+<% if current_user %>
+	<%= render 'comments/form' %>
+	<% else %>
+	<textarea disabled></textarea>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+	<p>
+		<%= comment.content %>
+	</p>
+	<p>
+		<%= comment.user.email %>
+	</p>
+<% end %>
