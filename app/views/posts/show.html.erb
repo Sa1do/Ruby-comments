@@ -1,3 +1,4 @@
+<% if @post.present? %>
 <br>
 <br>
 <br>
@@ -24,4 +25,11 @@
 	<p>
 		<%= comment.user.email %>
 	</p>
+<% end %>
+
+<% if @post.ditum.present? %>
+	<p>
+		<%= @post.ditum.ditumner %> views
+	</p>
+<% end %>
 <% end %>

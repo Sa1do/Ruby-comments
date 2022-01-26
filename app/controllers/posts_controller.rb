@@ -11,8 +11,12 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.new(post_params)
-		@post.save
-		redirect_to post_path(@post)
+		if @post.save
+			redirect_to post_path(@post)
+		else
+			flash[:alert] = "Post dont saved"
+			render :new
+		end
 	end
 
 	def show
@@ -34,7 +38,20 @@ class PostsController < ApplicationController
 	end
 	
 	def find_post
+		@post = Post.find_by_id(params[:id])
+	end
+
+	def ditumner
 		@post = Post.find(params[:id])
+		if @post.ditum.present?
+		@view = @post.ditum.ditumner + 1
+		@post.ditum.update(ditumner: @view)
+		redirect_to post_path(@post)
+		else
+			@views = @post.create_ditum(ditumner: 1)
+			@views.save
+			redirect_to post_path(@post)
+		end
 	end
 
 	private
