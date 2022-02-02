@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  posts:
+    create: 'Post has been created successfuly'
+    error:  'Title must be'

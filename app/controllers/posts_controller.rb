@@ -12,10 +12,11 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.new(post_params)
 		if @post.save
+			flash[:success] = t('posts.create')
 			redirect_to post_path(@post)
 		else
-			flash[:alert] = "Post dont saved"
-			render :new
+			flash[:danger] = t('posts.error')
+			redirect_to new_post_path
 		end
 	end
 
